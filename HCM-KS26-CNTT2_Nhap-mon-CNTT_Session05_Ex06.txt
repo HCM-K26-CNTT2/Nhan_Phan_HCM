@@ -1,15 +1,12 @@
 ﻿Bước 1 : mkdir smart-farm/bin, smart-farm/config, smart-farm/data
-Bước 2 : ni smart-farm\config\.env -Value "SENSOR_PASSWORD=changeme" 
-attrib +h smart-farm\config\.env 
-ls smart-farm\config -Force 
-
+Bước 2 : ni smart-farm\config\.env -Force | % { $_.Attributes += 'Hidden' } 
 Get -ChildItem thông thường không nhìn thấy file .env vì .env được gán là file ẩn nên get-childItem chỉ tìm thấy những thư mục bình thường không tìm file ẩn
 
 
 Bước 3 : cp C:\Users\Public\template.ps1 ~\smart-farm\bin\pump_control.ps1
 
 
-Bước 4 : ls smart-farm-Recurse -Force 
+Bước 4 : ls smart-farm -Recurse -Force 
 
 
 
@@ -25,16 +22,11 @@ mkdir smart-farm/bin, smart-farm/config, smart-farm/data
 
 
 	 tạo thư mục gồm 3 thư mục con bin,config và data
-	ni smart-farm\config\.env
-attrib +h smart-farm\config\.env 
-ls smart-farm\config -Force 
-
+	 ni smart-farm\config\.env -Force | % { $_.Attributes += 'Hidden' }
+ls smart-farm\config -Force
 	tạo file ẩn 
 và xác nhận file
 	cp C:\Users\Public\template.ps1 ~\smart-farm\bin\pump_control.ps1
-ls smart-farm-Recurse -Force 
-
-
 
 
 	sao chép và đổi tên file
@@ -58,9 +50,8 @@ Bản phân tích luồng IPO cho toàn bộ quá trình thiết lập căn cứ
 	Input
 	Tạo thư mục “ mkdir smart-farm/bin, smart-farm/config, smart-farm/data
 ”
-Tạo file ẩn “ni smart-farm\config\.env -Value "SENSOR_PASSWORD=changeme" 
-attrib +h
-smart-farm\config\.env 
+Tạo file ẩn “ni smart-farm\config\.env 
+attrib +h smart-farm\config\.env 
 ls smart-farm\config -Force 
 ”
 	Process
